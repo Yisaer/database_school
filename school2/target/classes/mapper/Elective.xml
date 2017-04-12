@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shu.databases.Dao.ElectiveDao">
+
+    <select id="getElectiveList" resultType="com.shu.databases.entity.Elective">
+        SELECT * FROM _elective
+    </select>
+
+    <insert id="insertElective" parameterType="com.shu.databases.entity.Elective">
+        INSERT INTO _elective(sId,semester,cId,tId) VALUES (#{sId},#{semester},#{cId},#{tId})
+    </insert>
+
+    <update id="updateElective" parameterType="com.shu.databases.entity.Elective">
+        UPDATE _elective SET sId = #{sId} , semester = #{semester},cId=#{cId},tId=#{tId},pscj=#{pscj},kscj=#{kscj},zpcj=#{zpcj} WHERE sId = #{sId} AND semester = #{semester} AND cId=#{cId} AND tId=#{tId}
+    </update>
+
+    <delete id="deleteElective" parameterType="com.shu.databases.entity.Elective">
+        DELETE FROM _elective WHERE sId=#{sId} AND cId = #{cId} AND semester =#{semester} AND tId=#{tId}
+    </delete>
+
+</mapper>
